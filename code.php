@@ -63,7 +63,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'getUser' && $_SERVER['REQUES
     }
 }
 
-// Update a new user to the database
+// Update user to the database
 if (isset($_GET['method']) && $_GET['method'] == 'updateUser' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_POST['userId'] ?? '';
     $name = $_POST['name'] ?? '';
@@ -77,7 +77,7 @@ if (isset($_GET['method']) && $_GET['method'] == 'updateUser' && $_SERVER['REQUE
 
     try {
         //Find user by ID
-        $user = ORM::for_table('users')->find_one($id);
+        $user = ORM::for_table('users')->find_one($userId);
         if ($user) {
             $user->name = $name;
             $user->email = $email;
